@@ -60,13 +60,13 @@ Tested with FPC ver. 3.3.1 (trunk), 3.1.1, 3.0.4, 3.0.2. FPC 3.0.0 - fail!
 
 Original IGDIPlus demo application compiled with Lazarus.
 
-![Demo compiled with Lazarus - screenshot](.\img\demo1.png)
+![Demo compiled with Lazarus - screenshot](./img/demo1.png)
 
 ---
 
 Additional demo - Color Wheel
 
-![Additional demo - Color Wheel - screenshot](.\img\demo2.png)
+![Additional demo - Color Wheel - screenshot](./img/demo2.png)
 
 ---
 
