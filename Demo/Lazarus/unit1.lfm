@@ -1,0 +1,8 @@
+object Form1: TForm1
+  Left = 346
+  Height = 372
+  Top = 250
+  Width = 611
+  Caption = 'IGDI+ Demo'
+  OnPaint = FormPaint
+end

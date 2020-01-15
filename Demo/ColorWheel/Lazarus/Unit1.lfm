@@ -1,0 +1,135 @@
+object Form1: TForm1
+  Left = 0
+  Height = 415
+  Top = 0
+  Width = 783
+  BorderIcons = [biSystemMenu, biMinimize]
+  BorderStyle = bsSingle
+  Caption = 'IGDIPlus Demo - Color Wheel'
+  ClientHeight = 415
+  ClientWidth = 783
+  Color = 15066597
+  DoubleBuffered = True
+  Font.CharSet = EASTEUROPE_CHARSET
+  Font.Color = clWindowText
+  Font.Height = -12
+  Font.Name = 'Segoe UI'
+  OnCreate = FormCreate
+  ParentDoubleBuffered = False
+  Position = poDefaultPosOnly
+  object img: TImage
+    Left = 8
+    Height = 400
+    Top = 8
+    Width = 400
+  end
+  object Label1: TLabel
+    Left = 425
+    Height = 15
+    Top = 23
+    Width = 74
+    Caption = 'Change color:'
+    ParentColor = False
+  end
+  object lblCurrentColor: TLabel
+    Left = 425
+    Height = 15
+    Top = 67
+    Width = 82
+    Caption = 'lblCurrentColor'
+    ParentColor = False
+  end
+  object shTriadicColor1: TShape
+    Left = 425
+    Height = 25
+    Top = 150
+    Width = 312
+  end
+  object lblTriadicColor1: TLabel
+    Left = 425
+    Height = 15
+    Top = 133
+    Width = 82
+    Caption = 'lblTriadicColor1'
+    ParentColor = False
+  end
+  object shTriadicColor2: TShape
+    Left = 425
+    Height = 25
+    Top = 214
+    Width = 312
+  end
+  object lblTriadicColor2: TLabel
+    Left = 425
+    Height = 15
+    Top = 197
+    Width = 82
+    Caption = 'lblTriadicColor2'
+    ParentColor = False
+  end
+  object shComplementaryColor: TShape
+    Left = 425
+    Height = 25
+    Top = 286
+    Width = 312
+  end
+  object lblComplementaryColor: TLabel
+    Left = 425
+    Height = 15
+    Top = 269
+    Width = 128
+    Caption = 'lblComplementaryColor'
+    ParentColor = False
+  end
+  object cbColor: TColorBox
+    Left = 425
+    Height = 24
+    Top = 39
+    Width = 145
+    Selected = clYellow
+    Style = [cbStandardColors, cbExtendedColors, cbCustomColor, cbPrettyNames]
+    DropDownCount = 16
+    ItemHeight = 16
+    OnChange = actRefreshImageExecute
+    TabOrder = 0
+  end
+  object edDegShift: TLabeledEdit
+    Left = 585
+    Height = 23
+    Top = 40
+    Width = 50
+    EditLabel.Height = 15
+    EditLabel.Width = 50
+    EditLabel.Caption = 'Distance:'
+    EditLabel.ParentColor = False
+    LabelSpacing = 2
+    ReadOnly = True
+    TabOrder = 1
+    Text = '60'
+  end
+  object udDegShift: TUpDown
+    Left = 635
+    Height = 23
+    Top = 40
+    Width = 16
+    Associate = edDegShift
+    Max = 179
+    Min = 1
+    OnClick = udDegShiftClick
+    Position = 60
+    TabOrder = 2
+  end
+  object Actions: TActionList
+    Left = 248
+    Top = 176
+    object actRefreshImage: TAction
+      Caption = 'Refresh image'
+      OnExecute = actRefreshImageExecute
+    end
+    object actEsc: TAction
+      Caption = 'actEsc'
+      OnExecute = actEscExecute
+      ShortCut = 27
+    end
+  end
+end
