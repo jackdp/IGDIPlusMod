@@ -130,6 +130,9 @@
     </RunParams>
     <RequiredPackages>
       <Item>
+        <PackageName Value="LazIGDIPlus"/>
+      </Item>
+      <Item>
         <PackageName Value="adLCL"/>
       </Item>
     </RequiredPackages>

@@ -1,14 +1,29 @@
 
 # IGDIPlusMod
 
-The free and open source library for Delphi and Free Pascal (Lazarus & CodeTyphon). It allows quick and easy implementations of complex GDI+ applications, in a natural Pascal-friendly code.
+The modified **IGDIPlus** library for Lazarus, CodeTyphon and Delphi.
+
+<!-- Start Document Outline -->
+
+- [IGDIPlus](#igdiplus)
+- [Original license](#original-license)
+- [License for my mods](#license-for-my-mods)
+- [My modifications](#my-modifications)
+- [Screenshots](#screenshots)
+- [Example](#example)
+- [Installation](#installation)
+- [Changelog](#changelog)
+
+<!-- End Document Outline -->
 
 ---
 
 ## IGDIPlus
 
+The free and open source library for Delphi. It allows quick and easy implementations of complex GDI+ applications, in a natural Pascal-friendly code.
+
 Author: Boian Mitov  
-Home page: http://mitov.com
+Home page: http://mitov.com/products/igdi+#overview
 
 ---
 
@@ -50,9 +65,10 @@ You can do with my code whatever you want without any cost and without any limit
 - Free Pascal support.
 - New files: `IGDIPlusHelpers.pas`, `IGDIPlusAPI_FPC.inc`.
 - New demo: Color Wheel
+- Packages for Lazarus and CodeTyphon
 
 Required FPC version 3.0.2 or newer!  
-Tested with FPC ver. 3.3.1 (trunk), 3.1.1, 3.0.4, 3.0.2. FPC 3.0.0 - fail!
+Tested with FPC ver. 3.3.1 (trunk), 3.1.1, 3.0.4, 3.0.2. **FPC 3.0.0 - fail**!
 
 ---
 
@@ -177,7 +193,30 @@ end;
 
 ---
 
+## Installation
+
+### Delphi
+
+Generally, **IGDIPlusMod** does not have to be installed, you only need to configure IDE or project.
+1. In the IDE options, add to the **Browsing path** or **Library path** directory with the `IGDIPlus.pas` file.
+1. In the project options, add to the **Search Path** directory with the `IGDIPlus.pas` file.
+
+### Lazarus
+
+You have two options:
+1. Build and install the `packages\Lazarus\lazigdiplus.lpk` package.
+2. In the project options, add directory with the `IGDIPlus.pas` file to the *Compiler Options*->*Paths*->**Other unit files**. 
+
+### CodeTyphon
+
+Proceed as in the case of Lazarus, only the file with the installation package is `packages\CodeTyphon\lazigdiplus.ctpkg`.
+
+---
+
 ## Changelog
+
+19.01.2020  
+Added packages for Lazarus and CodeTyphon.
 
 15.01.2020  
 Initial release with Free Pascal support.

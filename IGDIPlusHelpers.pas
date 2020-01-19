@@ -9,7 +9,10 @@ unit IGDIPlusHelpers;
 interface
 
 uses
-  Classes, SysUtils, Graphics, Types, IGDIPlus {$IFDEF HAS_SYSTEM_UITYPES},System.UITypes{$ENDIF};
+  Classes, SysUtils, Graphics, Types,
+  IGDIPlus
+  {$IFDEF HAS_SYSTEM_UITYPES},System.UITypes{$ENDIF}
+  ;
 
 
 {$IFDEF FPC}

@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="4">
+    <PathDelim Value="\"/>
+    <Name Value="LazIGDIPlus"/>
+    <Type Value="RunAndDesignTime"/>
+    <Author Value="Boain Mitov / Jacek Pazera"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <IncludeFiles Value="..\.."/>
+        <OtherUnitFiles Value="..\.."/>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)\"/>
+      </SearchPaths>
+    </CompilerOptions>
+    <Description Value="IGDI+ for Lazarus"/>
+    <License Value="http://mitov.com/products/igdi+#license"/>
+    <Files Count="5">
+      <Item1>
+        <Filename Value="..\..\IGDIPlusAPI.inc"/>
+        <Type Value="Include"/>
+      </Item1>
+      <Item2>
+        <Filename Value="..\..\IGDIPlusAPI_FPC.inc"/>
+        <Type Value="Include"/>
+      </Item2>
+      <Item3>
+        <Filename Value="..\..\IGDIPlus.pas"/>
+        <UnitName Value="IGDIPlus"/>
+      </Item3>
+      <Item4>
+        <Filename Value="..\..\IGDIPlusHelpers.pas"/>
+        <UnitName Value="IGDIPlusHelpers"/>
+      </Item4>
+      <Item5>
+        <Filename Value="..\..\VCL.IGDIPlusExt.pas"/>
+        <UnitName Value="VCL.IGDIPlusExt"/>
+      </Item5>
+    </Files>
+    <RequiredPkgs Count="2">
+      <Item1>
+        <PackageName Value="LCLBase"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="FCL"/>
+      </Item2>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <UseFileFilters Value="True"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>
