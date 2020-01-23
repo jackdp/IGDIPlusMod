@@ -1,83 +1,83 @@
 ﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
     <PropertyGroup>
-        <ProjectGuid>{5EA4B35B-F6D3-416E-8F4B-D95F941B1B33}</ProjectGuid>
-        <ProjectVersion>16.0</ProjectVersion>
+        <Base>True</Base>
+        <AppType>Application</AppType>
+        <Config Condition="'$(Config)'==''">Debug</Config>
         <FrameworkType>VCL</FrameworkType>
         <MainSource>IGDIPlusDemo.dpr</MainSource>
-        <Base>True</Base>
-        <Config Condition="'$(Config)'==''">Debug</Config>
         <Platform Condition="'$(Platform)'==''">Win32</Platform>
+        <ProjectGuid>{5EA4B35B-F6D3-416E-8F4B-D95F941B1B33}</ProjectGuid>
+        <ProjectVersion>16.1</ProjectVersion>
         <TargetedPlatforms>1</TargetedPlatforms>
-        <AppType>Application</AppType>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Base' or '$(Base)'!=''">
         <Base>true</Base>
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Base)'=='true') or '$(Base_Win32)'!=''">
-        <Base_Win32>true</Base_Win32>
-        <CfgParent>Base</CfgParent>
         <Base>true</Base>
+        <CfgParent>Base</CfgParent>
+        <Base_Win32>true</Base_Win32>
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win64' and '$(Base)'=='true') or '$(Base_Win64)'!=''">
-        <Base_Win64>true</Base_Win64>
-        <CfgParent>Base</CfgParent>
         <Base>true</Base>
+        <CfgParent>Base</CfgParent>
+        <Base_Win64>true</Base_Win64>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Debug' or '$(Cfg_1)'!=''">
-        <Cfg_1>true</Cfg_1>
-        <CfgParent>Base</CfgParent>
         <Base>true</Base>
+        <CfgParent>Base</CfgParent>
+        <Cfg_1>true</Cfg_1>
     </PropertyGroup>
     <PropertyGroup Condition="('$(Platform)'=='Win32' and '$(Cfg_1)'=='true') or '$(Cfg_1_Win32)'!=''">
-        <Cfg_1_Win32>true</Cfg_1_Win32>
+        <Base>true</Base>
         <CfgParent>Cfg_1</CfgParent>
         <Cfg_1>true</Cfg_1>
-        <Base>true</Base>
+        <Cfg_1_Win32>true</Cfg_1_Win32>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Config)'=='Release' or '$(Cfg_2)'!=''">
-        <Cfg_2>true</Cfg_2>
-        <CfgParent>Base</CfgParent>
         <Base>true</Base>
+        <CfgParent>Base</CfgParent>
+        <Cfg_2>true</Cfg_2>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base)'!=''">
-        <SanitizedProjectName>IGDIPlusDemo</SanitizedProjectName>
-        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
-        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
         <DCC_DcuOutput>.\$(Platform)\$(Config)</DCC_DcuOutput>
-        <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_E>false</DCC_E>
-        <DCC_N>false</DCC_N>
-        <DCC_S>false</DCC_S>
+        <DCC_ExeOutput>.\$(Platform)\$(Config)</DCC_ExeOutput>
         <DCC_F>false</DCC_F>
         <DCC_K>false</DCC_K>
+        <DCC_N>false</DCC_N>
+        <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;Vcl;Vcl.Imaging;Vcl.Touch;Vcl.Samples;Vcl.Shell;$(DCC_Namespace)</DCC_Namespace>
+        <DCC_S>false</DCC_S>
+        <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
+        <SanitizedProjectName>IGDIPlusDemo</SanitizedProjectName>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win32)'!=''">
-        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
-        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
         <DCC_Namespace>Winapi;System.Win;Data.Win;Datasnap.Win;Web.Win;Soap.Win;Xml.Win;Bde;$(DCC_Namespace)</DCC_Namespace>
-        <VerInfo_Locale>1033</VerInfo_Locale>
         <DCC_UsePackage>VideoLabGenericBasicPkgD17;OpenWireBindingPkgD17;DBXSqliteDriver;TextLabBasicPkgD17;fmx;IndySystem;TeeDB;TimingLabBasicPkgD17;PlotLabPkgD17;vclib;inetdbbde;DBXInterBaseDriver;DataSnapClient;DataSnapCommon;DataSnapServer;DataSnapProviderClient;DBXSybaseASEDriver;AudioLabBasicPkgD17;DbxCommonDriver;FMX.PlotLabPkgD17;vclimg;UserLabBasicPkgD17;dbxcds;MetropolisUILiveTile;vcldb;InstrumentLabPkgD17;vcldsnap;AudioLabEssentialPkgD17;DBXDb2Driver;OpenWireEditorDsnD17;DBXOracleDriver;CustomIPTransport;SignalLabPkgD17;vclribbon;VideoLabPkgD17;dsnap;IndyIPServer;fmxase;vcl;IndyCore;IndyIPCommon;CloudService;DBXMSSQLDriver;FmxTeeUI;frxDB17;CodeSiteExpressPkg;VideoLabAdditionalPkgD17;FMX.UserLabBasicPkgD17;inetdbxpress;webdsnap;FMX.VideoLabBasicPkgD17;LogicLabPkgD17;IntelligenceLabPkgD17;adortl;OpenWireLabPkgD17;fs17;frx17;bindcompfmx;vcldbx;VisionLabPkgD17;FMX.SignalLabBasicPkgD17;rtl;dbrtl;DbxClientDriver;bindcomp;inetdb;AudioLabPkgD17;Tee;VideoLabBasicPkgD17;DBXOdbcDriver;xmlrtl;svnui;ibxpress;OpenWirePkgD17;FMX.SignalLabScopePkgD17;AudioLabGenericBasicPkgD17;IndyProtocols;DBXMySQLDriver;MediaLabBasicPkgD17;vclactnband;bindengine;soaprtl;bindcompdbx;FMXTee;TeeUI;bindcompvcl;vclie;SignalLabAdditionalPkgD17;vcltouch;websnap;LogicLabBasicPkgD17;VclSmp;FMX.MediaLabBasicPkgD17;DBXInformixDriver;Intraweb;DataSnapConnectors;dsnapcon;DBXFirebirdDriver;inet;fsDB17;fmxobj;SignalLabScopePkgD17;vclx;frxe17;svn;DBXSybaseASADriver;fmxdae;SignalLabGenericPkgD17;bdertl;SignalLabBasicPkgD17;MediaLabPkgD17;FMX.InstrumentLabPkgD17;dbexpress;DataSnapIndy10ServerTransport;SignalLabGenericBasicPkgD17;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
+        <Manifest_File>$(BDS)\bin\default_app.manifest</Manifest_File>
+        <VerInfo_IncludeVerInfo>true</VerInfo_IncludeVerInfo>
         <VerInfo_Keys>CompanyName=;FileDescription=;FileVersion=1.0.0.0;InternalName=;LegalCopyright=;LegalTrademarks=;OriginalFilename=;ProductName=;ProductVersion=1.0.0.0;Comments=</VerInfo_Keys>
+        <VerInfo_Locale>1033</VerInfo_Locale>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Win64)'!=''">
         <DCC_UsePackage>DBXSqliteDriver;fmx;IndySystem;DBXInterBaseDriver;DataSnapClient;DataSnapCommon;DataSnapServer;DataSnapProviderClient;DBXSybaseASEDriver;DbxCommonDriver;vclimg;dbxcds;vcldb;vcldsnap;DBXDb2Driver;DBXOracleDriver;CustomIPTransport;dsnap;IndyIPServer;fmxase;vcl;IndyCore;IndyIPCommon;DBXMSSQLDriver;inetdbxpress;webdsnap;bindcompfmx;rtl;dbrtl;DbxClientDriver;bindcomp;inetdb;DBXOdbcDriver;xmlrtl;IndyProtocols;DBXMySQLDriver;vclactnband;bindengine;soaprtl;bindcompdbx;bindcompvcl;vclie;vcltouch;websnap;VclSmp;DBXInformixDriver;dsnapcon;DBXFirebirdDriver;inet;fmxobj;vclx;DBXSybaseASADriver;fmxdae;dbexpress;DataSnapIndy10ServerTransport;IndyIPClient;$(DCC_UsePackage)</DCC_UsePackage>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1)'!=''">
-        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
         <DCC_DebugDCUs>true</DCC_DebugDCUs>
-        <DCC_Optimize>false</DCC_Optimize>
-        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
         <DCC_DebugInfoInExe>true</DCC_DebugInfoInExe>
+        <DCC_Define>DEBUG;$(DCC_Define)</DCC_Define>
+        <DCC_GenerateStackFrames>true</DCC_GenerateStackFrames>
+        <DCC_Optimize>false</DCC_Optimize>
         <DCC_RemoteDebug>true</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_1_Win32)'!=''">
         <DCC_RemoteDebug>false</DCC_RemoteDebug>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Cfg_2)'!=''">
-        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
-        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
-        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
         <DCC_DebugInformation>0</DCC_DebugInformation>
+        <DCC_Define>RELEASE;$(DCC_Define)</DCC_Define>
+        <DCC_LocalDebugSymbols>false</DCC_LocalDebugSymbols>
+        <DCC_SymbolReferenceInfo>0</DCC_SymbolReferenceInfo>
     </PropertyGroup>
     <ItemGroup>
         <DelphiCompile Include="$(MainSource)">
@@ -87,15 +87,15 @@
             <Form>Form1</Form>
             <FormType>dfm</FormType>
         </DCCReference>
-        <BuildConfiguration Include="Release">
-            <Key>Cfg_2</Key>
-            <CfgParent>Base</CfgParent>
-        </BuildConfiguration>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
         <BuildConfiguration Include="Debug">
             <Key>Cfg_1</Key>
+            <CfgParent>Base</CfgParent>
+        </BuildConfiguration>
+        <BuildConfiguration Include="Release">
+            <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
         </BuildConfiguration>
     </ItemGroup>
