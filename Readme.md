@@ -54,7 +54,7 @@ restrictions:
 
 ---
 
-## License for my mods
+## License for my modifications
 
 You can do with my code whatever you want without any cost and without any limitations.
 
@@ -62,13 +62,13 @@ You can do with my code whatever you want without any cost and without any limit
 
 ## My modifications
 
-- Free Pascal support.
-- New files: `IGDIPlusHelpers.pas`, `IGDIPlusAPI_FPC.inc`.
+- Free Pascal support.  
+Required **FPC version 3.0.2 or newer**.  
+Tested with FPC ver. 3.3.1 (trunk), 3.1.1, 3.0.4, 3.0.2. **FPC 3.0.0 - fail**!  
+- Support for older Delphi versions (XE2, XE3).
+- New files: `IGDIPlusHelpers.pas`, `IGDIPlusAPI_FPC.inc`, `IGDIPlusAPI_DCC.inc`.
 - New demo: Color Wheel
-- Packages for Lazarus and CodeTyphon
-
-Required FPC version 3.0.2 or newer!  
-Tested with FPC ver. 3.3.1 (trunk), 3.1.1, 3.0.4, 3.0.2. **FPC 3.0.0 - fail**!
+- Packages for Delphi XE2 - 10.3 Rio, Lazarus and CodeTyphon.
 
 ---
 
@@ -197,15 +197,17 @@ end;
 
 ### Delphi
 
-Generally, **IGDIPlusMod** does not have to be installed, you only need to configure IDE or project.
-1. In the IDE options, add to the **Browsing path** or **Library path** directory with the `IGDIPlus.pas` file.
-1. In the project options, add to the **Search Path** directory with the `IGDIPlus.pas` file.
+In the **packages** directory you will find packages for Delphi XE2 - 10.3 Rio.
+Install the appropriate package (DPK file), then in the IDE options, add to the **Library path** directory with the `IGDIPlus.pas` file.
 
 ### Lazarus
 
 You have two options:
-1. Build and install the `packages\Lazarus\lazigdiplus.lpk` package.
-2. In the project options, add directory with the `IGDIPlus.pas` file to the *Compiler Options*->*Paths*->**Other unit files**. 
+1. Recommended:  
+Build and install the `packages\Lazarus\lazigdiplus.lpk` package.  
+Open/create some project. In the **Project Inspector** add `LazIGDIPlus` to **Required Packages**.
+2. Not recommended:  
+In the project options, add directory with the `IGDIPlus.pas` file to the *Compiler Options*->*Paths*->***Other unit files***. 
 
 ### CodeTyphon
 
@@ -215,8 +217,14 @@ Proceed as in the case of Lazarus, only the file with the installation package i
 
 ## Changelog
 
-19.01.2020  
+**23.01.2020**  
+Delphi XE2 and XE3 support.  
+Added packages for Delphi XE2 - 10.3 Rio.  
+Added main demo for XE2, *Color Wheel* demo for XE2 and XE7.  
+IGDIPlusHelpers: a few helper routines related to HatchStyle conversion.
+
+**19.01.2020**  
 Added packages for Lazarus and CodeTyphon.
 
-15.01.2020  
+**15.01.2020**  
 Initial release with Free Pascal support.
