@@ -34,11 +34,16 @@
 
   Jacek Pazera
   http://www.pazera-software.com
+
+  My mods:
+
   2020.01.15
-  + FPC (Lazarus & CodeTyphon) support
+    FPC (Lazarus & CodeTyphon) support.
     Required FPC ver. 3.0.2 or newer!
     Tested with FPC ver. 3.3.1 (trunk), 3.1.1, 3.0.4, 3.0.2. FPC 3.0.0 - fail!
-    Use fpcdeluxe to download and compile FPC sources, or CodeTyphon ver. 6.00 or newer
+
+  2020.01.23
+    Compatibility with Delphi XE2 and XE3.
 
 }
 
@@ -53,14 +58,18 @@ unit IGDIPlus;
   {$I IGDIPlusAPI_FPC.inc}
 {$ENDIF}
 
+{$IFDEF DCC}
+  {$I IGDIPlusAPI_DCC.inc}
+{$ENDIF}
+
 
 {$ALIGN ON}
 {$MINENUMSIZE 4}
 
 {$IFDEF DCC}
-{$WARN UNSAFE_TYPE OFF}
-{$WARN UNSAFE_CODE OFF}
-{$WARN UNSAFE_CAST OFF}
+  {$WARN UNSAFE_TYPE OFF}
+  {$WARN UNSAFE_CODE OFF}
+  {$WARN UNSAFE_CAST OFF}
 {$ENDIF}
 
 {$IFNDEF MSWINDOWS}
@@ -90,7 +99,7 @@ type
 {$ENDIF}
 
 
-  // from GDIPAPI.pas ( by hgourvest(at)progdigy.com )
+// from GDIPAPI.pas ( by hgourvest(at)progdigy.com )
 const
   { Metafile Functions }
   META_SETBKCOLOR = 513;
@@ -285,7 +294,7 @@ const
   EMR_SETTEXTJUSTIFICATION = 120;
   EMR_MAX = 120;
   EMR_MIN = 1;
-{$ENDIF}
+{$ENDIF} // FPC
 
 type
   PUINT16 = ^UINT16;
@@ -10021,7 +10030,7 @@ var
   {$ELSE} // Delphi XE8
     ASize1      : Int64;
     ASize2      : Int64;
-  {$ENDIF} // Delphi XE8
+  {$IFEND} // Delphi XE8
 {$ELSE}
   ASize1      : LargeUInt;
   ASize2      : LargeUInt;
@@ -10061,7 +10070,7 @@ var
   {$ELSE} // Delphi XE8
     ASize1        : Int64;
     ASize2        : Int64;
-  {$ENDIF} // Delphi XE8
+  {$IFEND} // Delphi XE8
 {$ELSE}
   ASize1        : LargeUInt;
   ASize2        : LargeUInt;
@@ -10080,7 +10089,11 @@ begin
       ADelphiStream.Write(ABytes, Length(ABytes));
       {$ENDIF}
     {$ELSE}
-    ADelphiStream.WriteData( ABytes, Length( ABytes ));
+      {$IFDEF DELPHI_XE3_OR_UP}
+      ADelphiStream.WriteData( ABytes, Length( ABytes ));
+      {$ELSE}
+      ADelphiStream.Write(ABytes, Length(ABytes));
+      {$ENDIF}
     {$ENDIF}
     ADelphiStream.Position := 0;
     try
@@ -10102,7 +10115,11 @@ begin
 
     finally
       {$IFDEF DCC}
-      ADelphiStream.DisposeOf();
+        {$IFDEF DELPHI_XE4_OR_UP}
+        ADelphiStream.DisposeOf();
+        {$ELSE}
+        ADelphiStream.Free;
+        {$ENDIF}
       {$ELSE}
       //http://docwiki.embarcadero.com/Libraries/Rio/en/System.TObject.DisposeOf
       ADelphiStream.Free;
@@ -10259,11 +10276,23 @@ begin
       AStream.Read( Result, AStream.Size );
       {$ENDIF}
     {$ELSE}
-    AStream.Read( Result, 0, AStream.Size );
+      {$IFDEF DELPHI_XE3_OR_UP}
+      AStream.Read( Result, 0, AStream.Size );
+      {$ELSE}
+      AStream.Read( Result, AStream.Size );
+      {$ENDIF}
     {$ENDIF}
 
   finally
-    {$IFDEF DCC}AStream.DisposeOf();{$ELSE}AStream.Free;{$ENDIF}
+    {$IFDEF DCC}
+      {$IFDEF DELPHI_XE4_OR_UP}
+      AStream.DisposeOf();
+      {$ELSE}
+      AStream.Free;
+      {$ENDIF}
+    {$ELSE}
+    AStream.Free;
+    {$ENDIF}
     end;
 
 end;
@@ -10287,11 +10316,23 @@ begin
       AStream.Read( Result, AStream.Size );
       {$ENDIF}
     {$ELSE}
-    AStream.Read( Result, 0, AStream.Size );
+      {$IFDEF DELPHI_XE3_OR_UP}
+      AStream.Read( Result, 0, AStream.Size );
+      {$ELSE}
+      AStream.Read( Result, AStream.Size );
+      {$ENDIF}
     {$ENDIF}
 
   finally
-    {$IFDEF DCC}AStream.DisposeOf();{$ELSE}AStream.Free;{$ENDIF}
+    {$IFDEF DCC}
+      {$IFDEF DELPHI_XE4_OR_UP}
+      AStream.DisposeOf();
+      {$ELSE}
+      AStream.Free;
+      {$ENDIF}
+    {$ELSE}
+    AStream.Free;
+    {$ENDIF}
     end;
 
 end;
@@ -17469,7 +17510,7 @@ begin
 {$IFDEF DCC}
   {$IF CompilerVersion <= 31} // Delphi RX 10.1 Berlin
     Tmp := 0;
-  {$ENDIF}
+  {$IFEND}
 {$ELSE}
   Tmp := 0;
 {$ENDIF}
@@ -17571,19 +17612,59 @@ begin
 
   GInitialized := False;
   if( Assigned(GenericSansSerifFontFamily)) then
-    GenericSansSerifFontFamily.{$IFDEF DCC}DisposeOf(){$ELSE}Free{$ENDIF};
+    GenericSansSerifFontFamily.
+    {$IFDEF DCC}
+      {$IFDEF DELPHI_XE4_OR_UP}
+      DisposeOf()
+      {$ELSE}
+      Free
+      {$ENDIF}
+    {$ELSE}Free
+    {$ENDIF};
 
   if( Assigned(GenericSerifFontFamily)) then
-    GenericSerifFontFamily.{$IFDEF DCC}DisposeOf(){$ELSE}Free{$ENDIF};
+    GenericSerifFontFamily.
+    {$IFDEF DCC}
+      {$IFDEF DELPHI_XE4_OR_UP}
+      DisposeOf()
+      {$ELSE}
+      Free
+      {$ENDIF}
+    {$ELSE}Free
+    {$ENDIF};
 
   if( Assigned(GenericMonospaceFontFamily)) then
-    GenericMonospaceFontFamily.{$IFDEF DCC}DisposeOf(){$ELSE}Free{$ENDIF};
+    GenericMonospaceFontFamily.
+    {$IFDEF DCC}
+      {$IFDEF DELPHI_XE4_OR_UP}
+      DisposeOf()
+      {$ELSE}
+      Free
+      {$ENDIF}
+    {$ELSE}Free
+    {$ENDIF};
 
   if( Assigned(GenericTypographicStringFormatBuffer)) then
-    GenericTypographicStringFormatBuffer.{$IFDEF DCC}DisposeOf(){$ELSE}Free{$ENDIF};
+    GenericTypographicStringFormatBuffer.
+    {$IFDEF DCC}
+      {$IFDEF DELPHI_XE4_OR_UP}
+      DisposeOf()
+      {$ELSE}
+      Free
+      {$ENDIF}
+    {$ELSE}Free
+    {$ENDIF};
 
   if( Assigned(GenericDefaultStringFormatBuffer)) then
-    GenericDefaultStringFormatBuffer.{$IFDEF DCC}DisposeOf(){$ELSE}Free{$ENDIF};
+    GenericDefaultStringFormatBuffer.
+    {$IFDEF DCC}
+      {$IFDEF DELPHI_XE4_OR_UP}
+      DisposeOf()
+      {$ELSE}
+      Free
+      {$ENDIF}
+    {$ELSE}Free
+    {$ENDIF};
 
   // Close GDI +
   if( Assigned( StartupOutput.NotificationUnhook )) then

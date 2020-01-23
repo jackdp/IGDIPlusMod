@@ -34,6 +34,7 @@ unit VCL.IGDIPlusExt;
 
 interface
 
+{$IFDEF MSWINDOWS}
 uses
   IGDIPlus, {$IFDEF DCC}VCL.Graphics;{$ELSE} Graphics;{$ENDIF}
 
@@ -54,7 +55,11 @@ type
 
   end;
 //---------------------------------------------------------------------------
+{$ENDIF}
+
 implementation
+
+{$IFDEF MSWINDOWS}
 //---------------------------------------------------------------------------
 constructor TIGPBitmapHelper.Create( ABitmap : TBitmap );
 begin
@@ -76,4 +81,6 @@ begin
   Create( canvas.Handle );
 end;
 //---------------------------------------------------------------------------
+
+{$ENDIF}
 end.
