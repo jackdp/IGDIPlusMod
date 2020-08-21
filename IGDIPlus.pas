@@ -82,7 +82,7 @@ uses
   Windows, ActiveX,
 {$ENDIF}
 {$IFDEF DCC}
-  System.UITypes, Classes, SysUtils, System.Types;
+  {$IFDEF DELPHIXE2_OR_ABOVE}System.UITypes,{$ENDIF} Classes, SysUtils, Graphics, Types;
 {$ELSE}
   Types,
   {$IFDEF HAS_SYSTEM_UITYPES} System.UITypes,{$ENDIF} // <-- FPC ver. 3.2 and UP (fpcsrc: packages\rtl-objpas\src\inc\system.uitypes.pp)
@@ -90,14 +90,21 @@ uses
 {$ENDIF}
 
 
-{$IFDEF FPC}
 
+{$IFDEF FPC}
+type
+  TAlphaColor = Cardinal;
+  PAlphaColor = ^TAlphaColor;
+{$ELSE}
 {$IFNDEF HAS_SYSTEM_UITYPES}
 type
   TAlphaColor = Cardinal;
   PAlphaColor = ^TAlphaColor;
 {$ENDIF}
+{$ENDIF}
 
+
+{$IFDEF FPC}
 
 // from GDIPAPI.pas ( by hgourvest(at)progdigy.com )
 const
@@ -10089,7 +10096,7 @@ begin
       ADelphiStream.Write(ABytes, Length(ABytes));
       {$ENDIF}
     {$ELSE}
-      {$IFDEF DELPHI_XE3_OR_UP}
+      {$IFDEF DELPHI_XE3_OR_ABOVE}
       ADelphiStream.WriteData( ABytes, Length( ABytes ));
       {$ELSE}
       ADelphiStream.Write(ABytes, Length(ABytes));
@@ -10115,7 +10122,7 @@ begin
 
     finally
       {$IFDEF DCC}
-        {$IFDEF DELPHI_XE4_OR_UP}
+        {$IFDEF DELPHI_XE4_OR_ABOVE}
         ADelphiStream.DisposeOf();
         {$ELSE}
         ADelphiStream.Free;
@@ -10276,7 +10283,7 @@ begin
       AStream.Read( Result, AStream.Size );
       {$ENDIF}
     {$ELSE}
-      {$IFDEF DELPHI_XE3_OR_UP}
+      {$IFDEF DELPHI_XE3_OR_ABOVE}
       AStream.Read( Result, 0, AStream.Size );
       {$ELSE}
       AStream.Read( Result, AStream.Size );
@@ -10285,7 +10292,7 @@ begin
 
   finally
     {$IFDEF DCC}
-      {$IFDEF DELPHI_XE4_OR_UP}
+      {$IFDEF DELPHI_XE4_OR_ABOVE}
       AStream.DisposeOf();
       {$ELSE}
       AStream.Free;
@@ -10316,7 +10323,7 @@ begin
       AStream.Read( Result, AStream.Size );
       {$ENDIF}
     {$ELSE}
-      {$IFDEF DELPHI_XE3_OR_UP}
+      {$IFDEF DELPHI_XE3_OR_ABOVE}
       AStream.Read( Result, 0, AStream.Size );
       {$ELSE}
       AStream.Read( Result, AStream.Size );
@@ -10325,7 +10332,7 @@ begin
 
   finally
     {$IFDEF DCC}
-      {$IFDEF DELPHI_XE4_OR_UP}
+      {$IFDEF DELPHI_XE4_OR_ABOVE}
       AStream.DisposeOf();
       {$ELSE}
       AStream.Free;
@@ -17614,7 +17621,7 @@ begin
   if( Assigned(GenericSansSerifFontFamily)) then
     GenericSansSerifFontFamily.
     {$IFDEF DCC}
-      {$IFDEF DELPHI_XE4_OR_UP}
+      {$IFDEF DELPHI_XE4_OR_ABOVE}
       DisposeOf()
       {$ELSE}
       Free
@@ -17625,7 +17632,7 @@ begin
   if( Assigned(GenericSerifFontFamily)) then
     GenericSerifFontFamily.
     {$IFDEF DCC}
-      {$IFDEF DELPHI_XE4_OR_UP}
+      {$IFDEF DELPHI_XE4_OR_ABOVE}
       DisposeOf()
       {$ELSE}
       Free
@@ -17636,7 +17643,7 @@ begin
   if( Assigned(GenericMonospaceFontFamily)) then
     GenericMonospaceFontFamily.
     {$IFDEF DCC}
-      {$IFDEF DELPHI_XE4_OR_UP}
+      {$IFDEF DELPHI_XE4_OR_ABOVE}
       DisposeOf()
       {$ELSE}
       Free
@@ -17647,7 +17654,7 @@ begin
   if( Assigned(GenericTypographicStringFormatBuffer)) then
     GenericTypographicStringFormatBuffer.
     {$IFDEF DCC}
-      {$IFDEF DELPHI_XE4_OR_UP}
+      {$IFDEF DELPHI_XE4_OR_ABOVE}
       DisposeOf()
       {$ELSE}
       Free
@@ -17658,7 +17665,7 @@ begin
   if( Assigned(GenericDefaultStringFormatBuffer)) then
     GenericDefaultStringFormatBuffer.
     {$IFDEF DCC}
-      {$IFDEF DELPHI_XE4_OR_UP}
+      {$IFDEF DELPHI_XE4_OR_ABOVE}
       DisposeOf()
       {$ELSE}
       Free

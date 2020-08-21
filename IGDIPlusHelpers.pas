@@ -4,14 +4,14 @@ unit IGDIPlusHelpers;
   {$mode delphi}
   {$I IGDIPlusAPI_FPC}
 {$ENDIF}
-{$IFDEF DCC}{$DEFINE HAS_SYSTEM_UITYPES}{$ENDIF}
+{$IFDEF DCC}{$I IGDIPlusAPI_DCC.inc}{$ENDIF}
 
 interface
 
 uses
   Classes, SysUtils, Graphics, Types,
   IGDIPlus
-  {$IFDEF HAS_SYSTEM_UITYPES},System.UITypes{$ENDIF}
+  {$IFDEF DELPHIXE2_OR_ABOVE},System.UITypes{$ENDIF}
   ;
 
 
